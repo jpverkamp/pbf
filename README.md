@@ -3,6 +3,12 @@ pbf
 
 A parallel variant of brainf**k, adding four new instructions: & ~ ! ?
 
+A blog post detailing the original BF interpreter (bf.rkt):
+http://blog.jverkamp.com/2012/12/30/a-brainfk-interpreter/
+
+A blog post detailing the updated PBF interpreter (pbf.rkt):
+http://blog.jverkamp.com/2012/12/31/parallel-bf/
+
 Full list of instructions
 -------------------------
 
