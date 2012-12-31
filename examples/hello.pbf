@@ -1,0 +1,65 @@
+the goal:
+ thread 0 outputs 'H' and sends 1
+ on 1 thread 1 outputs 'ello' and sends 2
+ on 2 thread 2 outputs ' ' and sends 3
+ on 3 thread 0 outputs 'W' and sends 4
+ on 4 thread 1 outputs 'orld' and sends 5
+ on 5 thread 2 outputs bang
+
+&[-         spawn thread 0 (for H and W)
+ >          go to cell 1
+ +++++++++  set cell 1 to 9
+ [          loop while cell 1 is not 0:
+  <++++++++  add 8 to cell 0
+  >-         subtract 1 from cell 1
+ ]
+ <.         output cell 0 (9 * 8 = 72 = 'H')
+ >+!        send a ping on 1
+ ++         set cell 2 to 3
+ [          loop while cell 1 is not 0:
+  <+++++     add 5 to cell 0
+  >-         subtract 1 from cell 1
+ ]
+ +++?      wait for a ping on 3
+ <.        output cell 0 (72 + 3 * 5 = 87 = 'W')
+ >+!        send a ping on 4
+ ~          kill this thread
+]
+
+&[-         spawn thread 1 (for 'ello' and 'orld')
+ >+++++
+  +++++     add 10 to cell 1
+ [          while cell 1 is not 0:
+  <+++++
+   +++++    add 10 to cell 0
+  >-        subtract 1 from cell 1
+ ]
+ <+         add 1 to cell 0
+ >+?        wait for a ping on 1
+ <.         output cell 0 (10 * 10 + 1 = 101 = 'e')
+ ++++++..   add 7 to cell 0 (for 108 = 'l') and output twice
+ +++.       add 3 to cell 0 (for 111 = 'o') and output
+ >+!        send a ping on 2
+ ++?        wait for a ping on 4
+ <.         output cell 0 ('o')
+ +++.       add 3 and output (114 = 'r')
+ ------.    subtract 6 and output (108 = 'l')
+ --------.  subtract 8 and output (100 = 'd')
+ >+!        send a ping on 5
+ ~          kill this thread
+]
+
+&[-         spawn thread 2 (for ' ' and bang)
+ >++++      set cell 1 to 4
+ [          while cell 1 is not 0:
+  <++++++++  add 8 to cell 0
+  >-         subtract 1 from cell 1
+ ]
+ ++?        wait for a ping on 2
+ <.         output cell 0 (4 * 8 = 32 = ' ')
+ >+!        send a ping on 3
+ <+         add 1 to cell 0
+ >++?       wait for a ping on 5
+ <.         output cell 0 (32 + 1 = 33 = '!')
+ ~          kill this thread
+]
