@@ -7,20 +7,22 @@ Full list of instructions
 -------------------------
 
 Original instructions:
-< Move the tape pointer to the left
-> Move the tape pointer to the right 
-+ Increment the current cell
-- Decrement the current cell
-. Output the value in the current cell
-, Read a value into the current cell
-[ If the current cell is 0, skip past the matching ]
-] If the current cell is not 0, skip back to the matching [
+
+    < Move the tape pointer to the left
+    > Move the tape pointer to the right 
+    + Increment the current cell
+    - Decrement the current cell
+    . Output the value in the current cell
+    , Read a value into the current cell
+    [ If the current cell is 0, skip past the matching ]
+    ] If the current cell is not 0, skip back to the matching [
 
 Parallel instructions:
-& Spawn a new thread, the current cell is 0 in the parent and 1 in the child
-~ Kill the current thread
-! Send a ping on the channel specified by the current cell
-? Wait for a ping on the channel specified by the current cell
+
+    & Spawn a new thread, the current cell is 0 in the parent and 1 in the child
+    ~ Kill the current thread
+    ! Send a ping on the channel specified by the current cell
+    ? Wait for a ping on the channel specified by the current cell
 
 Todo
 ----
