@@ -17,6 +17,10 @@ Original instructions:
     [ If the current cell is 0, skip past the matching ]
     ] If the current cell is not 0, skip back to the matching [
 
+Debugging instructions:
+
+    # Print the current contents of the tape
+
 Parallel instructions:
 
     & Spawn a new thread, the current cell is 0 in the parent and 1 in the child
